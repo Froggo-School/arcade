@@ -593,7 +593,7 @@ class UITextureButton(UIInteractiveWidget):
         self._tex = texture
         self._tex_hovered = texture_hovered
         self._tex_pressed = texture_pressed
-        self._style = style or {}
+        self._style = dict(style) or {"font_size":15, "font_color":arcade.color.WHITE,"border_width":2}
         self._text = text
 
     @property
