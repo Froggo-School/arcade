@@ -1100,25 +1100,26 @@ class UIFlatButton(UIInteractiveWidget):
                          size_hint_min=size_hint_min,
                          size_hint_max=size_hint_max)
         self._text = text
-        self._style = style or {}
+        self._style = dict(style) or {"font_name":"arial", "font_size":15, "font_color":arcade.color.WHITE,
+                                "border_width":2, "border_color":None, "bg_color":(21,19,21)}
 
     def do_render(self, surface: Surface):
         self.prepare_render(surface)
 
         # Render button
-        font_name = self._style.get("font_name", ("calibri", "arial"))
-        font_size = self._style.get("font_size", 15)
-        font_color = self._style.get("font_color", arcade.color.WHITE)
-        border_width = self._style.get("border_width", 2)
-        border_color = self._style.get("border_color", None)
-        bg_color = self._style.get("bg_color", (21, 19, 21))
+        font_name = self._style["font_name"]
+        font_size = self._style["font_size"]
+        font_color = self._style.["font_color"]
+        border_width = self._style["border_width"]
+        border_color = self._style["border_color"]
+        bg_color = self._style["bg_color"]
 
         if self.pressed:
-            bg_color = self._style.get("bg_color_pressed", arcade.color.WHITE)
-            border_color = self._style.get("border_color_pressed", arcade.color.WHITE)
-            font_color = self._style.get("font_color_pressed", arcade.color.BLACK)
+            bg_color = self._style["bg_color_pressed"]
+            border_color = self._style["border_color_pressed"]
+            font_color = self._style["font_color_pressed"]
         elif self.hovered:
-            border_color = self._style.get("border_color_pressed", arcade.color.WHITE)
+            border_color = self._style["border_color_pressed"]
 
         # render BG
         if bg_color:
